@@ -79,7 +79,6 @@ if __name__ == '__main__':
 	#tr2.displayEmployee()
 
 	tr3=Transaction(2,7)
-	#tr3.displayEmployee()
 
 	if Block.blockcount==0:
 		bl=Block(tr,0)
