@@ -9,6 +9,7 @@ from election.models import Election
 from .forms import AdminForm
 # Create your views here.
 
+#Login Index Page
 def index(request):
     if 'admin' in request.session:
         return render(request, 'index.html')
@@ -18,7 +19,7 @@ def index(request):
         return render(request, 'index.html')
 
 
-
+#Login Page for Voter
 def loginVoter(request):
     if request.session['has_authenticated'] is not True and request.session['admin'] is not True:
         return render(request, 'auth/loginVoter.html')
@@ -51,7 +52,7 @@ def logout(request):
         return render(request, 'auth/error.html', context)
 
 
-
+#Voter Validation Process
 def validateVoter(request):
     if request.method == 'POST':
         thumbId = request.POST['thumbId']
@@ -130,7 +131,7 @@ def loginAdmin(request):
         return render(request, 'auth/loginAdmin.html', context)
 
 
-
+#Page for adding new Administrator
 def addAdmin(request):
     form = AdminForm(request.POST or None)
     if form.is_valid():
@@ -155,7 +156,7 @@ def addAdmin(request):
     return render(request, 'auth/addAdmin.html', context)
 
 
-
+#Admin Validation Process
 def validateAdmin(request):
     if request.method == 'POST':
         thumbId = request.POST['thumbId']
